@@ -1,12 +1,12 @@
-# Pluck Photography Studios 2
+# Pluck Photography Website Redesign
 
-I wan to start a new website project. Can I attach a file?
+I am trying to build a website. I want a sleek and modern website
 
 This project was built with [Lovable](https://lovable.dev).
 
 ## Build with Lovable
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/87f0c5db-af12-41ed-b60c-75f15c693c98).
+Continue developing this project in the [Lovable editor](https://lovable.dev/projects/abc15b3d-b58e-4870-8f59-081f2cb0fbec).
 
 - **Ship faster**: describe what you want to build and Lovable handles the code.
 - **Stay in sync**: every change made in Lovable is committed straight to this repository.

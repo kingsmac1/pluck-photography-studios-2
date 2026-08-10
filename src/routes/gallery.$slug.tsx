@@ -1,0 +1,82 @@
+import { createFileRoute, notFound } from "@tanstack/react-router";
+import { CtaBanner } from "@/components/CtaBanner";
+import { PageHero } from "@/components/PageHero";
+import { Parallax } from "@/components/Parallax";
+import { Reveal } from "@/components/Reveal";
+import { galleries, type Gallery } from "@/lib/site";
+
+export const Route = createFileRoute("/gallery/$slug")({
+  loader: ({ params }) => {
+    const gallery: Gallery | undefined = galleries.find((g) => g.slug === params.slug);
+    if (!gallery) throw notFound();
+    return { gallery };
+  },
+  head: ({ params, loaderData }) => {
+    if (!loaderData) {
+      return {
+        meta: [{ title: "Gallery not found — Pluck Photography Studios" }, { name: "robots", content: "noindex" }],
+      };
+    }
+    const title = `${loaderData.gallery.name} Photography — Pluck Photography Studios`;
+    const description = loaderData.gallery.intro.slice(0, 155);
+    return {
+      meta: [
+        { title },
+        { name: "description", content: description },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description },
+        { property: "og:type", content: "article" },
+        { property: "og:url", content: `/gallery/${params.slug}` },
+        { name: "twitter:card", content: "summary_large_image" },
+      ],
+      links: [{ rel: "canonical", href: `/gallery/${params.slug}` }],
+    };
+  },
+  component: GalleryPage,
+});
+
+function GalleryPage() {
+  const { gallery } = Route.useLoaderData() as { gallery: Gallery };
+
+  return (
+    <>
+      <PageHero
+        eyebrow={gallery.eyebrow}
+        title={`${gallery.name} Photography`}
+        intro={gallery.intro}
+        image={gallery.cover}
+      />
+
+      <section className="mx-auto max-w-[1400px] px-6 pb-8 lg:px-10">
+        <div className="grid gap-10 border-t border-border pt-14 lg:grid-cols-2">
+          {gallery.body.map((paragraph, i) => (
+            <Reveal key={paragraph} delay={i * 110}>
+              <p className="text-sm leading-relaxed text-muted-foreground md:text-base">
+                {paragraph}
+              </p>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-[1400px] px-6 py-20 lg:px-10 lg:py-28">
+        <div className="columns-1 gap-6 sm:columns-2 lg:columns-3 [&>*]:mb-6">
+          {gallery.images.map((src, i) => (
+            <Reveal key={`${src}-${i}`} delay={(i % 3) * 90} className="break-inside-avoid">
+              <Parallax speed={i % 3 === 1 ? 0.08 : 0.02} className="hover-zoom rounded-lg">
+                <img
+                  src={src}
+                  alt={`${gallery.name} photography frame ${i + 1}`}
+                  loading="lazy"
+                  className="w-full rounded-lg object-cover"
+                />
+              </Parallax>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      <CtaBanner />
+    </>
+  );
+}
