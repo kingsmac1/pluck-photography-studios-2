@@ -81,21 +81,38 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Pluck Photography Studios — Calgary Photography" },
-      { name: "description", content: "Calgary photography studio for portraits, weddings, events, family and maternity sessions." },
+      { title: "Pluck Photography Studios | Calgary Photographer" },
+      {
+        name: "description",
+        content:
+          "Pluck Photography Studios is a Calgary photography studio for portraits, headshots, weddings, events, family, kids and maternity sessions.",
+      },
       { name: "author", content: "Pluck Photography Studios" },
-      { property: "og:title", content: "Pluck Photography Studios" },
-      { property: "og:description", content: "Exquisite portrait, wedding and family photography in Calgary, Alberta." },
+      { name: "keywords", content: "Calgary photographer, portrait photography Calgary, wedding photographer Calgary, headshots Calgary, family photography Calgary, maternity photography Calgary" },
+      { property: "og:site_name", content: "Pluck Photography Studios" },
+      { property: "og:title", content: "Pluck Photography Studios | Calgary Photographer" },
+      {
+        property: "og:description",
+        content:
+          "Exquisite portrait, wedding, family and maternity photography in Calgary, Alberta. Book your session with Pluck Photography Studios.",
+      },
       { property: "og:type", content: "website" },
+      { property: "og:locale", content: "en_CA" },
       { name: "twitter:card", content: "summary_large_image" },
-      
+      { name: "twitter:title", content: "Pluck Photography Studios | Calgary Photographer" },
+      {
+        name: "twitter:description",
+        content:
+          "Exquisite portrait, wedding, family and maternity photography in Calgary, Alberta.",
+      },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.png", type: "image/png" },
+      { rel: "apple-touch-icon", href: "/favicon.png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
@@ -103,7 +120,35 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;700&display=swap",
       },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          "@id": "https://pluckphotographystudios.ca",
+          name: "Pluck Photography Studios",
+          description:
+            "Calgary photography studio specialising in portraits, headshots, weddings, events, family, kids and maternity sessions.",
+          telephone: "+1 (825) 365-9567",
+          email: "info@pluckphotographystudios.ca",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Calgary",
+            addressRegion: "AB",
+            addressCountry: "CA",
+          },
+          areaServed: "Calgary, Alberta",
+          sameAs: [
+            "http://facebook.com/pluckimages",
+            "https://www.instagram.com/pluckphotographystudio/",
+            "https://www.tiktok.com/@pluckphotographystudio",
+          ],
+        }),
+      },
+    ],
   }),
+
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,

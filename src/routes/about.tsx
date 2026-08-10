@@ -6,7 +6,7 @@ import { Reveal } from "@/components/Reveal";
 import { TestimonialCoverflow } from "@/components/TestimonialCoverflow";
 import { photos } from "@/lib/photos";
 
-const title = "About — Pluck Photography Studios";
+const title = "About Pluck Photography Studios | Calgary";
 const description =
   "Meet Pluck Photography Studios, a Calgary photography studio creating exquisite portraits, wedding and family images with precision and artistic flair.";
 
@@ -20,6 +20,8 @@ export const Route = createFileRoute("/about")({
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/about" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: title },
+      { name: "twitter:description", content: description },
     ],
     links: [{ rel: "canonical", href: "/about" }],
   }),

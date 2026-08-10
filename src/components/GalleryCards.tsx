@@ -1,6 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { Reveal } from "./Reveal";
 import { galleries } from "@/lib/site";
+import { cn } from "@/lib/utils";
+
 
 /** Grid of category cards linking to each single gallery page. */
 export function GalleryCards({
@@ -22,15 +24,20 @@ export function GalleryCards({
         ) : null}
       </Reveal>
 
-      <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-16 columns-1 gap-6 sm:columns-2 lg:columns-3 [&>*]:mb-6">
         {galleries.map((gallery, i) => (
-          <Reveal key={gallery.slug} delay={(i % 3) * 90}>
+          <Reveal key={gallery.slug} delay={(i % 3) * 90} className="break-inside-avoid">
             <Link
               to="/gallery/$slug"
               params={{ slug: gallery.slug }}
               className="hover-zoom group block h-full overflow-hidden rounded-lg bg-surface"
             >
-              <div className="relative aspect-4/5 overflow-hidden">
+              <div
+                className={cn(
+                  "relative overflow-hidden",
+                  i % 3 === 0 ? "aspect-4/5" : i % 3 === 1 ? "aspect-3/4" : "aspect-square",
+                )}
+              >
                 <img
                   src={gallery.cover}
                   alt={`${gallery.name} photography by Pluck Photography Studios`}
@@ -43,6 +50,7 @@ export function GalleryCards({
                   <h3 className="display mt-2 text-2xl">{gallery.name}</h3>
                 </div>
               </div>
+
               <div className="flex items-center justify-between gap-4 p-6">
                 <p className="min-w-0 text-sm text-muted-foreground">{gallery.tagline}</p>
                 <span

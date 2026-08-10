@@ -4,7 +4,7 @@ import { CtaBanner } from "@/components/CtaBanner";
 import { PageHero } from "@/components/PageHero";
 import { photos } from "@/lib/photos";
 
-const title = "Contact — Pluck Photography Studios";
+const title = "Contact Pluck Photography Studios | Calgary";
 const description =
   "Get in touch with Pluck Photography Studios in Calgary, Alberta. Call, email or send an enquiry about your portrait, wedding or event session.";
 
@@ -18,6 +18,8 @@ export const Route = createFileRoute("/contact")({
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/contact" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: title },
+      { name: "twitter:description", content: description },
     ],
     links: [{ rel: "canonical", href: "/contact" }],
   }),
