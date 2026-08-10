@@ -6,7 +6,7 @@ import { PricingSection } from "@/components/PricingSection";
 import { Reveal } from "@/components/Reveal";
 import { photos } from "@/lib/photos";
 
-const title = "Services — Pluck Photography Studios";
+const title = "Photography Services in Calgary | Pluck";
 const description =
   "Wedding, birthday, event, portrait, family, kids and maternity photography services from our Calgary studio, plus what to expect from every session.";
 
@@ -20,6 +20,8 @@ export const Route = createFileRoute("/services")({
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/services" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: title },
+      { name: "twitter:description", content: description },
     ],
     links: [{ rel: "canonical", href: "/services" }],
   }),

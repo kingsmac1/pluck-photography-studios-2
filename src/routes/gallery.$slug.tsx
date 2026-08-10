@@ -61,20 +61,25 @@ function GalleryPage() {
 
       <section className="mx-auto max-w-[1400px] px-6 py-20 lg:px-10 lg:py-28">
         <div className="columns-1 gap-6 sm:columns-2 lg:columns-3 [&>*]:mb-6">
-          {gallery.images.map((src, i) => (
-            <Reveal key={`${src}-${i}`} delay={(i % 3) * 90} className="break-inside-avoid">
-              <Parallax speed={i % 3 === 1 ? 0.08 : 0.02} className="hover-zoom rounded-lg">
-                <img
-                  src={src}
-                  alt={`${gallery.name} photography frame ${i + 1}`}
-                  loading="lazy"
-                  className="w-full rounded-lg object-cover"
-                />
-              </Parallax>
-            </Reveal>
-          ))}
+          {gallery.images.map((src, i) => {
+            const shapes = ["aspect-4/5", "aspect-square", "aspect-3/4", "aspect-2/3"] as const;
+            const shape = shapes[i % shapes.length];
+            return (
+              <Reveal key={`${src}-${i}`} delay={(i % 3) * 90} className="break-inside-avoid">
+                <Parallax speed={i % 3 === 1 ? 0.08 : 0.02} className="hover-zoom rounded-lg">
+                  <img
+                    src={src}
+                    alt={`${gallery.name} photography frame ${i + 1}`}
+                    loading="lazy"
+                    className={`w-full rounded-lg object-cover ${shape}`}
+                  />
+                </Parallax>
+              </Reveal>
+            );
+          })}
         </div>
       </section>
+
 
       <CtaBanner />
     </>

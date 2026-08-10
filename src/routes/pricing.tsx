@@ -6,7 +6,7 @@ import { Reveal } from "@/components/Reveal";
 import { TestimonialCoverflow } from "@/components/TestimonialCoverflow";
 import { photos } from "@/lib/photos";
 
-const title = "Pricing — Pluck Photography Studios";
+const title = "Studio Session Pricing | Pluck Photography";
 const description =
   "Silver, Gold and Platinum studio session pricing from $260, including outfit changes, hand-edited high resolution images and full direction.";
 
@@ -20,6 +20,8 @@ export const Route = createFileRoute("/pricing")({
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/pricing" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: title },
+      { name: "twitter:description", content: description },
     ],
     links: [{ rel: "canonical", href: "/pricing" }],
   }),
