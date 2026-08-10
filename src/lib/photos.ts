@@ -1,5 +1,4 @@
 // CDN-hosted photography from Pluck Photography Studios.
-const base = "/__l5e/assets-v1";
 
 export const photos = {
   bannerWide1: "/__l5e/assets-v1/f4e114df-d030-4c59-840a-d2ddf946cc5e/banner-background-1.jpg",
