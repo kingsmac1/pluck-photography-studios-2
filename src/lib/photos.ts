@@ -23,8 +23,8 @@ const localPhotoUrls = Object.entries(localPhotoModules).reduce<Record<string, s
 }, {});
 
 const localPhotoAliases: Record<string, string> = {
-  "pluck-logo": "Pluck Photography Logo 2",
-  "pluck-logo-light": "Pluck Photography Logo White",
+  "pluck-logo": "pluck-logo-2",
+  "pluck-logo-light": "pluck-logo-white",
 };
 
 const fallbackPhotos = {
