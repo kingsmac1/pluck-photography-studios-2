@@ -1,6 +1,32 @@
-// CDN-hosted photography from Pluck Photography Studios.
+const localPhotoModules = import.meta.glob<string>("../assets/photos2/*.{jpg,jpeg,png,webp}", {
+  eager: true,
+  as: "url",
+});
 
-export const photos = {
+const normalizeFilename = (filename: string) => {
+  let normalized = filename;
+  while (true) {
+    const match = normalized.match(/\.(jpg|jpeg|png|webp)$/i);
+    if (!match) break;
+    normalized = normalized.slice(0, -match[0].length);
+  }
+  return normalized;
+};
+
+const localPhotoUrls = Object.entries(localPhotoModules).reduce<Record<string, string>>((acc, [path, url]) => {
+  const filename = path.split("/").pop();
+  if (!filename) return acc;
+  const key = normalizeFilename(filename);
+  acc[key] = url;
+  return acc;
+}, {});
+
+const localPhotoAliases: Record<string, string> = {
+  "pluck-logo": "Pluck Photography Logo 2",
+  "pluck-logo-light": "Pluck Photography Logo White",
+};
+
+const fallbackPhotos = {
   bannerWide1: "/__l5e/assets-v1/f4e114df-d030-4c59-840a-d2ddf946cc5e/banner-background-1.jpg",
   bannerWide2: "/__l5e/assets-v1/3646b232-c516-4d7e-b3c8-8e2244009cdb/banner-background-3.jpg",
   galleryWide: "/__l5e/assets-v1/83ab4142-f96e-4269-9223-0ccb8b7475ba/gallery-3.jpg",
@@ -42,7 +68,56 @@ export const photos = {
   n4: "/__l5e/assets-v1/42789063-0836-4c54-b573-a67e467fd778/pluck-portrait-new4.jpg",
   logo: "/__l5e/assets-v1/874dcdfb-3197-40bd-b393-667f1dc96764/pluck-logo.png",
   logoLight: "/__l5e/assets-v1/160f178b-f57b-4e45-b3e0-780a9b901fa6/pluck-logo-light.png",
+};
 
+const resolvePhoto = (filename: string, fallback: string) => {
+  const normalized = normalizeFilename(filename);
+  const aliasKey = localPhotoAliases[normalized] ? normalizeFilename(localPhotoAliases[normalized]) : normalized;
+  return localPhotoUrls[aliasKey] ?? localPhotoUrls[normalized] ?? fallback;
+};
+
+export const photos = {
+  bannerWide1: resolvePhoto("banner-background-1", fallbackPhotos.bannerWide1),
+  bannerWide2: resolvePhoto("banner-background-2", fallbackPhotos.bannerWide2),
+  galleryWide: resolvePhoto("gallery-3", fallbackPhotos.galleryWide),
+  p18: resolvePhoto("pluck-portrait-18", fallbackPhotos.p18),
+  p21: resolvePhoto("pluck-portrait-21", fallbackPhotos.p21),
+  p23: resolvePhoto("pluck-portrait-23", fallbackPhotos.p23),
+  p24: resolvePhoto("pluck-portrait-24", fallbackPhotos.p24),
+  p26: resolvePhoto("pluck-portrait-26", fallbackPhotos.p26),
+  p28: resolvePhoto("pluck-portrait-28", fallbackPhotos.p28),
+  p34: resolvePhoto("pluck-portrait-34", fallbackPhotos.p34),
+  p35: resolvePhoto("pluck-portrait-35", fallbackPhotos.p35),
+  p37: resolvePhoto("pluck-portrait-37", fallbackPhotos.p37),
+  p40: resolvePhoto("pluck-portrait-40", fallbackPhotos.p40),
+  p41: resolvePhoto("pluck-portrait-41", fallbackPhotos.p41),
+  p43: resolvePhoto("pluck-portrait-43", fallbackPhotos.p43),
+  p45: resolvePhoto("pluck-portrait-45", fallbackPhotos.p45),
+  p46: resolvePhoto("pluck-portrait-46", fallbackPhotos.p46),
+  p47: resolvePhoto("pluck-portrait-47", fallbackPhotos.p47),
+  p48: resolvePhoto("pluck-portrait-48", fallbackPhotos.p48),
+  p49: resolvePhoto("pluck-portrait-49", fallbackPhotos.p49),
+  p51: resolvePhoto("pluck-portrait-51", fallbackPhotos.p51),
+  p52: resolvePhoto("pluck-portrait-52", fallbackPhotos.p52),
+  p55: resolvePhoto("pluck-portrait-55", fallbackPhotos.p55),
+  p58: resolvePhoto("pluck-portrait-58", fallbackPhotos.p58),
+  p66: resolvePhoto("pluck-portrait-66", fallbackPhotos.p66),
+  a1: resolvePhoto("pluck-portrait-a1", fallbackPhotos.a1),
+  a10: resolvePhoto("pluck-portrait-a10", fallbackPhotos.a10),
+  a11: resolvePhoto("pluck-portrait-a11", fallbackPhotos.a11),
+  a14: resolvePhoto("pluck-portrait-a14", fallbackPhotos.a14),
+  a4: resolvePhoto("pluck-portrait-a4", fallbackPhotos.a4),
+  a5: resolvePhoto("pluck-portrait-a5", fallbackPhotos.a5),
+  a6: resolvePhoto("pluck-portrait-a6", fallbackPhotos.a6),
+  a7: resolvePhoto("pluck-portrait-a7", fallbackPhotos.a7),
+  a8: resolvePhoto("pluck-portrait-a8", fallbackPhotos.a8),
+  a9: resolvePhoto("pluck-portrait-a9", fallbackPhotos.a9),
+  n1: resolvePhoto("pluck-portrait-new1", fallbackPhotos.n1),
+  n2: resolvePhoto("pluck-portrait-new2", fallbackPhotos.n2),
+  n3: resolvePhoto("pluck-portrait-new3", fallbackPhotos.n3),
+  n4: resolvePhoto("pluck-portrait-new4", fallbackPhotos.n4),
+  logo: resolvePhoto("pluck-logo", fallbackPhotos.logo),
+  logoLight: resolvePhoto("pluck-logo-light", fallbackPhotos.logoLight),
 } as const;
 
 export const allPortraits: string[] = [

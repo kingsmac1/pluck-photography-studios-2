@@ -37,7 +37,10 @@ export function SiteHeader() {
             <img
               src={photos.logoLight}
               alt="Pluck Photography Studios"
-              className={cn("w-auto transition-all duration-500", scrolled ? "h-11" : "h-14")}
+              className={cn(
+                "w-auto transition-all duration-500",
+                scrolled ? "h-[60px]" : "h-[80px]",
+              )}
             />
           </Link>
 

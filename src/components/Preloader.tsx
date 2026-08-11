@@ -48,7 +48,7 @@ export function Preloader() {
         <img
           src={photos.logo}
           alt=""
-          className="w-40 animate-breathe opacity-90 md:w-52"
+          className="w-52 animate-breathe opacity-90 md:w-64"
         />
       </div>
     </div>

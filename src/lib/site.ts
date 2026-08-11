@@ -1,4 +1,5 @@
 import { photos } from "./photos";
+import { getGalleryCover, getGalleryImages } from "./gallery-assets";
 
 export const BOOKING_URL = "https://pluckphotography31.pixieset.com/booking/";
 
@@ -49,8 +50,26 @@ export type Gallery = {
   images: string[];
 };
 
+type GalleryInit = Omit<Gallery, "cover" | "images"> & {
+  fallbackCover: string;
+  fallbackImages: string[];
+};
+
+function createGallery(init: GalleryInit): Gallery {
+  return {
+    slug: init.slug,
+    name: init.name,
+    eyebrow: init.eyebrow,
+    tagline: init.tagline,
+    intro: init.intro,
+    body: init.body,
+    cover: getGalleryCover(init.slug) ?? init.fallbackCover,
+    images: getGalleryImages(init.slug) ?? init.fallbackImages,
+  };
+}
+
 export const galleries: Gallery[] = [
-  {
+  createGallery({
     slug: "wedding",
     name: "Wedding",
     eyebrow: "Two people, one day",
@@ -61,10 +80,10 @@ export const galleries: Gallery[] = [
       "We photograph the quiet hour before anyone arrives, the hands being held during the vows, the aunt who cries first, and the dance floor at midnight. Nothing is staged into stiffness — we direct only enough to keep the light kind and the frame clean.",
       "Coverage is built around your timeline rather than a package template, and we work discreetly so your guests remember the day, not the photographer.",
     ],
-    cover: photos.p23,
-    images: [photos.p23, photos.p26, photos.p28, photos.p21, photos.p24, photos.p18, photos.p34, photos.p37],
-  },
-  {
+    fallbackCover: photos.p23,
+    fallbackImages: [photos.p23, photos.p26, photos.p28, photos.p21, photos.p24, photos.p18, photos.p34, photos.p37],
+  }),
+  createGallery({
     slug: "birthdays",
     name: "Birthdays",
     eyebrow: "Milestones",
@@ -75,10 +94,10 @@ export const galleries: Gallery[] = [
       "We shoot birthdays two ways: a styled studio set with a backdrop and cake, or documentary coverage of the party as it actually happens — the candles, the reactions, the mess.",
       "Studio sessions run 45 to 90 minutes with outfit changes; on-location coverage is priced by the hour.",
     ],
-    cover: photos.p40,
-    images: [photos.p40, photos.p41, photos.p35, photos.p45, photos.p43, photos.p46, photos.p48, photos.p47],
-  },
-  {
+    fallbackCover: photos.p40,
+    fallbackImages: [photos.p40, photos.p41, photos.p35, photos.p45, photos.p43, photos.p46, photos.p48, photos.p47],
+  }),
+  createGallery({
     slug: "events",
     name: "Events",
     eyebrow: "Corporate & social",
@@ -89,10 +108,10 @@ export const galleries: Gallery[] = [
       "We arrive early, learn the run of show, and cover the room in layers: the wide establishing frames, the speakers and panels, the candid handshakes, and the details your sponsors paid for.",
       "A same-week preview gallery goes out for teams that need images while the event is still current, with the full edit following shortly after.",
     ],
-    cover: photos.p52,
-    images: [photos.p52, photos.p51, photos.p55, photos.p49, photos.p58, photos.p66, photos.p37, photos.p45],
-  },
-  {
+    fallbackCover: photos.p52,
+    fallbackImages: [photos.p52, photos.p51, photos.p55, photos.p49, photos.p58, photos.p66, photos.p37, photos.p45],
+  }),
+  createGallery({
     slug: "portraits",
     name: "Portraits",
     eyebrow: "One person, properly seen",
@@ -103,10 +122,10 @@ export const galleries: Gallery[] = [
       "Most people arrive convinced they are not photogenic. That is a lighting and direction problem, not a face problem. We solve it with posture cues, a considered lens choice and enough time for your shoulders to drop.",
       "You leave with a set of images that work everywhere — LinkedIn, a company wall, a press feature, or a frame at home.",
     ],
-    cover: photos.a5,
-    images: [photos.a5, photos.a4, photos.a1, photos.a6, photos.a7, photos.a8, photos.a9, photos.a10],
-  },
-  {
+    fallbackCover: photos.a5,
+    fallbackImages: [photos.a5, photos.a4, photos.a1, photos.a6, photos.a7, photos.a8, photos.a9, photos.a10],
+  }),
+  createGallery({
     slug: "family",
     name: "Family",
     eyebrow: "Everyone in one frame",
@@ -117,10 +136,10 @@ export const galleries: Gallery[] = [
       "We plan around the youngest person present, keep the session moving, and get the posed group frame early so the rest can be loose and genuinely fun.",
       "Wardrobe guidance is sent ahead of time so the family reads as one palette instead of seven competing ones.",
     ],
-    cover: photos.n1,
-    images: [photos.n1, photos.n2, photos.n3, photos.n4, photos.a11, photos.a14, photos.p21, photos.p24],
-  },
-  {
+    fallbackCover: photos.n1,
+    fallbackImages: [photos.n1, photos.n2, photos.n3, photos.n4, photos.a11, photos.a14, photos.p21, photos.p24],
+  }),
+  createGallery({
     slug: "kids",
     name: "Kids",
     eyebrow: "Small humans",
@@ -131,10 +150,10 @@ export const galleries: Gallery[] = [
       "There is no bribing and no forced smiles. We set the light, hand over a prop or a favourite toy, and wait for the real expression — the one you actually recognise.",
       "Sessions are kept short and are scheduled around naps and moods. Parents are welcome in frame, and often should be.",
     ],
-    cover: photos.p47,
-    images: [photos.p47, photos.p48, photos.p46, photos.p43, photos.p35, photos.n4, photos.n3, photos.p34],
-  },
-  {
+    fallbackCover: photos.p47,
+    fallbackImages: [photos.p47, photos.p48, photos.p46, photos.p43, photos.p35, photos.n4, photos.n3, photos.p34],
+  }),
+  createGallery({
     slug: "maternity",
     name: "Maternity",
     eyebrow: "Before the arrival",
@@ -145,9 +164,9 @@ export const galleries: Gallery[] = [
       "We recommend booking between 30 and 36 weeks. Gowns and fabric are available in studio, and partners and older siblings are always welcome in part of the session.",
       "Everything is paced gently, with seating between setups and no expectation that you hold anything uncomfortable.",
     ],
-    cover: photos.p55,
-    images: [photos.p55, photos.p58, photos.p66, photos.p49, photos.p51, photos.p52, photos.a9, photos.a10],
-  },
+    fallbackCover: photos.p55,
+    fallbackImages: [photos.p55, photos.p58, photos.p66, photos.p49, photos.p51, photos.p52, photos.a9, photos.a10],
+  }),
 ];
 
 export const pricing = [
