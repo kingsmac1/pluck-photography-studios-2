@@ -1,5 +1,7 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
+import { useState } from "react";
 import { CtaBanner } from "@/components/CtaBanner";
+import { Lightbox } from "@/components/Lightbox";
 import { PageHero } from "@/components/PageHero";
 import { Parallax } from "@/components/Parallax";
 import { Reveal } from "@/components/Reveal";
@@ -37,6 +39,7 @@ export const Route = createFileRoute("/gallery/$slug")({
 
 function GalleryPage() {
   const { gallery } = Route.useLoaderData() as { gallery: Gallery };
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   return (
     <>
@@ -67,12 +70,19 @@ function GalleryPage() {
             return (
               <Reveal key={`${src}-${i}`} delay={(i % 3) * 90} className="break-inside-avoid">
                 <Parallax speed={i % 3 === 1 ? 0.08 : 0.02} className="hover-zoom rounded-lg">
-                  <img
-                    src={src}
-                    alt={`${gallery.name} photography frame ${i + 1}`}
-                    loading="lazy"
-                    className={`w-full rounded-lg object-cover ${shape}`}
-                  />
+                  <button
+                    type="button"
+                    onClick={() => setLightboxIndex(i)}
+                    className="block w-full cursor-zoom-in"
+                    aria-label={`Open ${gallery.name} photo ${i + 1} in lightbox`}
+                  >
+                    <img
+                      src={src}
+                      alt={`${gallery.name} photography frame ${i + 1}`}
+                      loading="lazy"
+                      className={`w-full rounded-lg object-cover ${shape}`}
+                    />
+                  </button>
                 </Parallax>
               </Reveal>
             );
@@ -80,6 +90,15 @@ function GalleryPage() {
         </div>
       </section>
 
+      {lightboxIndex !== null && (
+        <Lightbox
+          images={gallery.images}
+          index={lightboxIndex}
+          onClose={() => setLightboxIndex(null)}
+          onNavigate={setLightboxIndex}
+          altPrefix={`${gallery.name} photography frame`}
+        />
+      )}
 
       <CtaBanner />
     </>
