@@ -60,7 +60,7 @@ function GalleryPage() {
       </section>
 
       <section className="mx-auto max-w-[1400px] px-6 py-20 lg:px-10 lg:py-28">
-        <div className="columns-1 gap-6 sm:columns-2 lg:columns-3 [&>*]:mb-6">
+        <div className="columns-2 gap-4 sm:gap-6 lg:columns-3 [&>*]:mb-4 sm:[&>*]:mb-6">
           {gallery.images.map((src, i) => {
             const shapes = ["aspect-4/5", "aspect-square", "aspect-3/4", "aspect-2/3"] as const;
             const shape = shapes[i % shapes.length];
