@@ -1,6 +1,7 @@
 const localPhotoModules = import.meta.glob<string>("../assets/photos2/*.{jpg,jpeg,png,webp}", {
   eager: true,
-  as: "url",
+  query: "?url",
+  import: "default",
 });
 
 const normalizeFilename = (filename: string) => {

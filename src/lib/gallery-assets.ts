@@ -1,6 +1,7 @@
 const galleryImageModules = import.meta.glob("../assets/galleries/*/*.{jpg,jpeg,png,webp}", {
   eager: true,
-  as: "url",
+  query: "?url",
+  import: "default",
 });
 
 type GalleryImageMap = Record<string, string[]>;
