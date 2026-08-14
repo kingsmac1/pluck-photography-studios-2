@@ -28,8 +28,8 @@ export function Parallax({ children, className, speed = 0.2 }: ParallaxProps) {
       frame = 0;
       const rect = node.getBoundingClientRect();
       // Normalized against viewport height only — deliberately NOT scaled by
-      // rect.height, so tall sections don't get a proportionally bigger swing
-      // than short ones.
+      // rect.height, so tall sections don't get a proportionally bigger
+      // swing than short ones.
       const progress = (rect.top + rect.height / 2 - window.innerHeight / 2) / window.innerHeight;
       const clamped = Math.max(-1, Math.min(1, progress));
       setOffset(clamped * maxOffset);
@@ -50,9 +50,21 @@ export function Parallax({ children, className, speed = 0.2 }: ParallaxProps) {
   }, [speed, maxOffset]);
 
   return (
-    <div ref={ref} className={cn("relative overflow-hidden will-change-transform", className)}>
+    <div
+      ref={ref}
+      className={cn(
+        // Fallback sizing: since the inner wrapper is absolutely positioned
+        // (and so contributes no height to this container), this element
+        // needs its own height source. aspect-square is a safe default so
+        // it never collapses to 0px if a caller forgets to pass an explicit
+        // height/aspect-ratio via `className`. Any height/aspect-ratio class
+        // passed in `className` will override this via Tailwind's cascade.
+        "relative aspect-square overflow-hidden will-change-transform",
+        className
+      )}
+    >
       <div
-        className="absolute inset-x-0"
+        className="absolute inset-x-0 h-full w-full"
         style={{
           top: `-${maxOffset}px`,
           bottom: `-${maxOffset}px`,
