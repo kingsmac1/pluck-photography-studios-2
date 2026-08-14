@@ -13,6 +13,11 @@ export function Parallax({ children, className, speed = 0.2 }: ParallaxProps) {
   const ref = useRef<HTMLDivElement | null>(null);
   const [offset, setOffset] = useState(0);
 
+  // Max possible translation in px. Used to both clamp the effect and size
+  // the overscan buffer, so a tall section can never translate the image
+  // far enough to expose the container's background.
+  const maxOffset = Math.abs(speed) * 100;
+
   useEffect(() => {
     const node = ref.current;
     if (!node) return;
@@ -22,8 +27,12 @@ export function Parallax({ children, className, speed = 0.2 }: ParallaxProps) {
     const update = () => {
       frame = 0;
       const rect = node.getBoundingClientRect();
+      // Normalized against viewport height only — deliberately NOT scaled by
+      // rect.height, so tall sections don't get a proportionally bigger swing
+      // than short ones.
       const progress = (rect.top + rect.height / 2 - window.innerHeight / 2) / window.innerHeight;
-      setOffset(progress * speed * 100);
+      const clamped = Math.max(-1, Math.min(1, progress));
+      setOffset(clamped * maxOffset);
     };
     const onScroll = () => {
       if (frame) return;
@@ -38,11 +47,20 @@ export function Parallax({ children, className, speed = 0.2 }: ParallaxProps) {
       window.removeEventListener("resize", onScroll);
       if (frame) window.cancelAnimationFrame(frame);
     };
-  }, [speed]);
+  }, [speed, maxOffset]);
 
   return (
-    <div ref={ref} className={cn("will-change-transform", className)}>
-      <div style={{ transform: `translate3d(0, ${offset}px, 0)` }}>{children}</div>
+    <div ref={ref} className={cn("relative overflow-hidden will-change-transform", className)}>
+      <div
+        className="absolute inset-x-0"
+        style={{
+          top: `-${maxOffset}px`,
+          bottom: `-${maxOffset}px`,
+          transform: `translate3d(0, ${offset}px, 0)`,
+        }}
+      >
+        {children}
+      </div>
     </div>
   );
 }

@@ -5,7 +5,7 @@ import { photos } from "@/lib/photos";
 
 export function CtaBanner() {
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative flex min-h-[100dvh] flex-col items-center justify-center overflow-hidden lg:block lg:min-h-0">
       <Parallax speed={0.28} className="absolute inset-0 -z-10">
         <img
           src={photos.bannerWide2}
