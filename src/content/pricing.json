@@ -1,0 +1,40 @@
+{
+  "tiers": [
+    {
+      "name": "Silver",
+      "price": "$260",
+      "features": ["Up to 2 outfits", "8 edited high resolution images", "45 Minutes"],
+      "featured": false
+    },
+    {
+      "name": "Gold",
+      "price": "$340",
+      "features": ["Up to 3 outfits", "10 edited high resolution images", "60 minutes"],
+      "featured": true
+    },
+    {
+      "name": "Platinum",
+      "price": "$420",
+      "features": ["Up to 4 outfits", "16 edited high resolution images", "90 Minutes"],
+      "featured": false
+    }
+  ],
+  "faqs": [
+    {
+      "q": "What is included in every session?",
+      "a": "Direction throughout, professional studio lighting, hand editing on each delivered frame and a private online gallery for downloads."
+    },
+    {
+      "q": "How are weddings and events priced?",
+      "a": "Coverage is quoted per day based on your timeline, locations and the number of photographers required. Get in touch for a tailored estimate."
+    },
+    {
+      "q": "When do we receive the images?",
+      "a": "A preview set arrives within 48 hours, with the full hand-edited gallery following within two weeks for sessions."
+    },
+    {
+      "q": "Can we add extra images?",
+      "a": "Yes. Additional edited images from your session can be purchased individually after you have seen the gallery."
+    }
+  ]
+}

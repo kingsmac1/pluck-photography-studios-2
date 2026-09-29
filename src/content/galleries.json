@@ -1,0 +1,93 @@
+[
+  {
+    "slug": "wedding",
+    "name": "Wedding",
+    "eyebrow": "Two people, one day",
+    "tagline": "The whole day, kept exactly as it felt.",
+    "intro": "A wedding is absolutely magical and is arguably one of the most important days of someone's life. Our job is to make sure your magical moments are captured forever.",
+    "body": [
+      "We photograph the quiet hour before anyone arrives, the hands being held during the vows, the aunt who cries first, and the dance floor at midnight. Nothing is staged into stiffness — we direct only enough to keep the light kind and the frame clean.",
+      "Coverage is built around your timeline rather than a package template, and we work discreetly so your guests remember the day, not the photographer."
+    ],
+    "coverImage": null,
+    "imageOrder": []
+  },
+  {
+    "slug": "birthdays",
+    "name": "Birthdays",
+    "eyebrow": "Milestones",
+    "tagline": "First, fiftieth or hundredth — still worth a frame.",
+    "intro": "Whether it's a first birthday, a 50th, or a 100th, a birthday is a milestone, and we are always ready to help you capture the celebrations, laughter and joy of your special day.",
+    "body": [
+      "We shoot birthdays two ways: a styled studio set with a backdrop and cake, or documentary coverage of the party as it actually happens — the candles, the reactions, the mess.",
+      "Studio sessions run 45 to 90 minutes with outfit changes; on-location coverage is priced by the hour."
+    ],
+    "coverImage": null,
+    "imageOrder": []
+  },
+  {
+    "slug": "events",
+    "name": "Events",
+    "eyebrow": "Corporate & social",
+    "tagline": "Coverage that reads like a story, not a contact sheet.",
+    "intro": "Conferences, launches, galas, cultural celebrations and corporate socials — photographed cleanly, delivered fast, ready for your press kit and socials.",
+    "body": [
+      "We arrive early, learn the run of show, and cover the room in layers: the wide establishing frames, the speakers and panels, the candid handshakes, and the details your sponsors paid for.",
+      "A same-week preview gallery goes out for teams that need images while the event is still current, with the full edit following shortly after."
+    ],
+    "coverImage": null,
+    "imageOrder": []
+  },
+  {
+    "slug": "portraits",
+    "name": "Portraits",
+    "eyebrow": "One person, properly seen",
+    "tagline": "Headshots and personal portraits with a pulse.",
+    "intro": "Corporate headshots, creative portraits, graduation and personal branding sessions made in our Calgary studio with controlled light and a lot of patience.",
+    "body": [
+      "Most people arrive convinced they are not photogenic. That is a lighting and direction problem, not a face problem. We solve it with posture cues, a considered lens choice and enough time for your shoulders to drop.",
+      "You leave with a set of images that work everywhere — LinkedIn, a company wall, a press feature, or a frame at home."
+    ],
+    "coverImage": null,
+    "imageOrder": []
+  },
+  {
+    "slug": "family",
+    "name": "Family",
+    "eyebrow": "Everyone in one frame",
+    "tagline": "Formal, playful, or somewhere in the middle.",
+    "intro": "Formal family portrait or something more playful and casual? We will do our absolute best to create images that reflect the love and connection in your family — at our studio, at home, or in a park.",
+    "body": [
+      "We plan around the youngest person present, keep the session moving, and get the posed group frame early so the rest can be loose and genuinely fun.",
+      "Wardrobe guidance is sent ahead of time so the family reads as one palette instead of seven competing ones."
+    ],
+    "coverImage": null,
+    "imageOrder": []
+  },
+  {
+    "slug": "kids",
+    "name": "Kids",
+    "eyebrow": "Small humans",
+    "tagline": "Photographed at their speed, not ours.",
+    "intro": "Newborns, toddlers and school-age children, photographed with the patience the age actually requires.",
+    "body": [
+      "There is no bribing and no forced smiles. We set the light, hand over a prop or a favourite toy, and wait for the real expression — the one you actually recognise.",
+      "Sessions are kept short and are scheduled around naps and moods. Parents are welcome in frame, and often should be."
+    ],
+    "coverImage": null,
+    "imageOrder": []
+  },
+  {
+    "slug": "maternity",
+    "name": "Maternity",
+    "eyebrow": "Before the arrival",
+    "tagline": "A short season, kept permanently.",
+    "intro": "Maternity sessions made to feel calm and flattering, photographed in studio with soft directional light, or outdoors in the golden hour.",
+    "body": [
+      "We recommend booking between 30 and 36 weeks. Gowns and fabric are available in studio, and partners and older siblings are always welcome in part of the session.",
+      "Everything is paced gently, with seating between setups and no expectation that you hold anything uncomfortable."
+    ],
+    "coverImage": null,
+    "imageOrder": []
+  }
+]

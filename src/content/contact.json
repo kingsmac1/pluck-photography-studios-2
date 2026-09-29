@@ -1,0 +1,11 @@
+{
+  "phone": "+1 (825) 365-9567",
+  "phoneHref": "tel:+18253659567",
+  "email": "info@pluckphotographystudios.ca",
+  "address": "Calgary, Alberta",
+  "socials": [
+    { "label": "Facebook", "href": "http://facebook.com/pluckimages" },
+    { "label": "Instagram", "href": "https://www.instagram.com/pluckphotographystudio/" },
+    { "label": "TikTok", "href": "https://www.tiktok.com/@pluckphotographystudio" }
+  ]
+}

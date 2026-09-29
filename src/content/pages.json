@@ -1,0 +1,44 @@
+{
+  "about": {
+    "hero": {
+      "eyebrow": "Our Story",
+      "title": "Exquisite Images, Made With Care",
+      "intro": "Pluck Photography Studios is a Calgary photography studio specializing in portraits, family sessions, corporate headshots, maternity and weddings. We photograph people the way they would like to be remembered."
+    },
+    "story": {
+      "eyebrow": "The Studio",
+      "heading": "Photography That Feels Like You",
+      "paragraphs": [
+        "We built the studio around one belief: everyone photographs well when they are lit properly, directed kindly and given a little time. Most people who tell us they hate having their picture taken leave with a favourite.",
+        "From a first birthday to a wedding day, from a headshot to a maternity session, the approach is the same — considered light, honest direction, and hand editing on every frame we deliver."
+      ]
+    },
+    "values": [
+      {
+        "title": "Precision",
+        "copy": "Light, lens and timing are decided deliberately. Nothing in the frame is there by accident."
+      },
+      {
+        "title": "Patience",
+        "copy": "We wait for the real expression instead of asking for a performance. It takes longer and it shows."
+      },
+      {
+        "title": "Care",
+        "copy": "You are guided from the first email to the final delivery, so the session feels easy rather than exposing."
+      }
+    ]
+  },
+  "services": {
+    "hero": {
+      "eyebrow": "What We Do",
+      "title": "Services & Sessions",
+      "intro": "Studio and on-location photography across seven specialisms, each with its own pace, lighting approach and delivery."
+    },
+    "steps": [
+      { "step": "01", "title": "Enquire", "copy": "Tell us the occasion, the date and roughly what you have in mind." },
+      { "step": "02", "title": "Plan", "copy": "We agree a session type, wardrobe direction and a run of show." },
+      { "step": "03", "title": "Photograph", "copy": "You are lit, directed and given time. No rushing, no forced smiles." },
+      { "step": "04", "title": "Deliver", "copy": "Hand-edited high resolution images in a private online gallery." }
+    ]
+  }
+}

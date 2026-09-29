@@ -15,6 +15,7 @@ import { Preloader } from "@/components/Preloader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { contact } from "@/lib/site";
 
 function NotFoundComponent() {
   return (
@@ -88,7 +89,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Pluck Photography Studios is a Calgary photography studio for portraits, headshots, weddings, events, family, kids and maternity sessions.",
       },
       { name: "author", content: "Pluck Photography Studios" },
-      { name: "keywords", content: "Calgary photographer, portrait photography Calgary, wedding photographer Calgary, headshots Calgary, family photography Calgary, maternity photography Calgary" },
+      {
+        name: "keywords",
+        content:
+          "Calgary photographer, portrait photography Calgary, wedding photographer Calgary, headshots Calgary, family photography Calgary, maternity photography Calgary",
+      },
       { property: "og:site_name", content: "Pluck Photography Studios" },
       { property: "og:title", content: "Pluck Photography Studios | Calgary Photographer" },
       {
@@ -130,8 +135,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           name: "Pluck Photography Studios",
           description:
             "Calgary photography studio specialising in portraits, headshots, weddings, events, family, kids and maternity sessions.",
-          telephone: "+1 (825) 365-9567",
-          email: "info@pluckphotographystudios.ca",
+          telephone: contact.phone,
+          email: contact.email,
           address: {
             "@type": "PostalAddress",
             addressLocality: "Calgary",
@@ -139,11 +144,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             addressCountry: "CA",
           },
           areaServed: "Calgary, Alberta",
-          sameAs: [
-            "http://facebook.com/pluckimages",
-            "https://www.instagram.com/pluckphotographystudio/",
-            "https://www.tiktok.com/@pluckphotographystudio",
-          ],
+          sameAs: contact.socials.map((social) => social.href),
         }),
       },
     ],

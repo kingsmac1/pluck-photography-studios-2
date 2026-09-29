@@ -14,7 +14,18 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as DashboardLayoutRouteImport } from './routes/dashboard/_layout'
+import { Route as DashboardLoginRouteImport } from './routes/dashboard/login'
 import { Route as GallerySlugRouteImport } from './routes/gallery.$slug'
+import { Route as DashboardLayoutIndexRouteImport } from './routes/dashboard/_layout/index'
+import { Route as DashboardLayoutContactRouteImport } from './routes/dashboard/_layout/contact'
+import { Route as DashboardLayoutHeroRouteImport } from './routes/dashboard/_layout/hero'
+import { Route as DashboardLayoutPricingRouteImport } from './routes/dashboard/_layout/pricing'
+import { Route as DashboardLayoutReviewsRouteImport } from './routes/dashboard/_layout/reviews'
+import { Route as DashboardLayoutGalleriesIndexRouteImport } from './routes/dashboard/_layout/galleries/index'
+import { Route as DashboardLayoutGalleriesSlugRouteImport } from './routes/dashboard/_layout/galleries/$slug'
+import { Route as DashboardLayoutPagesAboutRouteImport } from './routes/dashboard/_layout/pages/about'
+import { Route as DashboardLayoutPagesServicesRouteImport } from './routes/dashboard/_layout/pages/services'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -41,11 +52,70 @@ const ServicesRoute = ServicesRouteImport.update({
   path: '/services',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardLayoutRoute = DashboardLayoutRouteImport.update({
+  id: '/dashboard/_layout',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardLoginRoute = DashboardLoginRouteImport.update({
+  id: '/dashboard/login',
+  path: '/dashboard/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GallerySlugRoute = GallerySlugRouteImport.update({
   id: '/gallery/$slug',
   path: '/gallery/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardLayoutIndexRoute = DashboardLayoutIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => DashboardLayoutRoute,
+} as any)
+const DashboardLayoutContactRoute = DashboardLayoutContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => DashboardLayoutRoute,
+} as any)
+const DashboardLayoutHeroRoute = DashboardLayoutHeroRouteImport.update({
+  id: '/hero',
+  path: '/hero',
+  getParentRoute: () => DashboardLayoutRoute,
+} as any)
+const DashboardLayoutPricingRoute = DashboardLayoutPricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => DashboardLayoutRoute,
+} as any)
+const DashboardLayoutReviewsRoute = DashboardLayoutReviewsRouteImport.update({
+  id: '/reviews',
+  path: '/reviews',
+  getParentRoute: () => DashboardLayoutRoute,
+} as any)
+const DashboardLayoutGalleriesIndexRoute =
+  DashboardLayoutGalleriesIndexRouteImport.update({
+    id: '/galleries/',
+    path: '/galleries/',
+    getParentRoute: () => DashboardLayoutRoute,
+  } as any)
+const DashboardLayoutGalleriesSlugRoute =
+  DashboardLayoutGalleriesSlugRouteImport.update({
+    id: '/galleries/$slug',
+    path: '/galleries/$slug',
+    getParentRoute: () => DashboardLayoutRoute,
+  } as any)
+const DashboardLayoutPagesAboutRoute =
+  DashboardLayoutPagesAboutRouteImport.update({
+    id: '/pages/about',
+    path: '/pages/about',
+    getParentRoute: () => DashboardLayoutRoute,
+  } as any)
+const DashboardLayoutPagesServicesRoute =
+  DashboardLayoutPagesServicesRouteImport.update({
+    id: '/pages/services',
+    path: '/pages/services',
+    getParentRoute: () => DashboardLayoutRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -53,7 +123,18 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/pricing': typeof PricingRoute
   '/services': typeof ServicesRoute
+  '/dashboard': typeof DashboardLayoutRouteWithChildren
+  '/dashboard/login': typeof DashboardLoginRoute
   '/gallery/$slug': typeof GallerySlugRoute
+  '/dashboard/contact': typeof DashboardLayoutContactRoute
+  '/dashboard/hero': typeof DashboardLayoutHeroRoute
+  '/dashboard/pricing': typeof DashboardLayoutPricingRoute
+  '/dashboard/reviews': typeof DashboardLayoutReviewsRoute
+  '/dashboard/': typeof DashboardLayoutIndexRoute
+  '/dashboard/galleries/$slug': typeof DashboardLayoutGalleriesSlugRoute
+  '/dashboard/pages/about': typeof DashboardLayoutPagesAboutRoute
+  '/dashboard/pages/services': typeof DashboardLayoutPagesServicesRoute
+  '/dashboard/galleries/': typeof DashboardLayoutGalleriesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -61,7 +142,17 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/pricing': typeof PricingRoute
   '/services': typeof ServicesRoute
+  '/dashboard/login': typeof DashboardLoginRoute
   '/gallery/$slug': typeof GallerySlugRoute
+  '/dashboard/contact': typeof DashboardLayoutContactRoute
+  '/dashboard/hero': typeof DashboardLayoutHeroRoute
+  '/dashboard/pricing': typeof DashboardLayoutPricingRoute
+  '/dashboard/reviews': typeof DashboardLayoutReviewsRoute
+  '/dashboard': typeof DashboardLayoutIndexRoute
+  '/dashboard/galleries/$slug': typeof DashboardLayoutGalleriesSlugRoute
+  '/dashboard/pages/about': typeof DashboardLayoutPagesAboutRoute
+  '/dashboard/pages/services': typeof DashboardLayoutPagesServicesRoute
+  '/dashboard/galleries': typeof DashboardLayoutGalleriesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -70,14 +161,57 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/pricing': typeof PricingRoute
   '/services': typeof ServicesRoute
+  '/dashboard/_layout': typeof DashboardLayoutRouteWithChildren
+  '/dashboard/login': typeof DashboardLoginRoute
   '/gallery/$slug': typeof GallerySlugRoute
+  '/dashboard/_layout/contact': typeof DashboardLayoutContactRoute
+  '/dashboard/_layout/hero': typeof DashboardLayoutHeroRoute
+  '/dashboard/_layout/pricing': typeof DashboardLayoutPricingRoute
+  '/dashboard/_layout/reviews': typeof DashboardLayoutReviewsRoute
+  '/dashboard/_layout/': typeof DashboardLayoutIndexRoute
+  '/dashboard/_layout/galleries/$slug': typeof DashboardLayoutGalleriesSlugRoute
+  '/dashboard/_layout/pages/about': typeof DashboardLayoutPagesAboutRoute
+  '/dashboard/_layout/pages/services': typeof DashboardLayoutPagesServicesRoute
+  '/dashboard/_layout/galleries/': typeof DashboardLayoutGalleriesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/about' | '/contact' | '/pricing' | '/services' | '/gallery/$slug'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/pricing'
+    | '/services'
+    | '/dashboard'
+    | '/dashboard/login'
+    | '/gallery/$slug'
+    | '/dashboard/contact'
+    | '/dashboard/hero'
+    | '/dashboard/pricing'
+    | '/dashboard/reviews'
+    | '/dashboard/'
+    | '/dashboard/galleries/$slug'
+    | '/dashboard/pages/about'
+    | '/dashboard/pages/services'
+    | '/dashboard/galleries/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/pricing' | '/services' | '/gallery/$slug'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/pricing'
+    | '/services'
+    | '/dashboard/login'
+    | '/gallery/$slug'
+    | '/dashboard/contact'
+    | '/dashboard/hero'
+    | '/dashboard/pricing'
+    | '/dashboard/reviews'
+    | '/dashboard'
+    | '/dashboard/galleries/$slug'
+    | '/dashboard/pages/about'
+    | '/dashboard/pages/services'
+    | '/dashboard/galleries'
   id:
     | '__root__'
     | '/'
@@ -85,7 +219,18 @@ export interface FileRouteTypes {
     | '/contact'
     | '/pricing'
     | '/services'
+    | '/dashboard/_layout'
+    | '/dashboard/login'
     | '/gallery/$slug'
+    | '/dashboard/_layout/contact'
+    | '/dashboard/_layout/hero'
+    | '/dashboard/_layout/pricing'
+    | '/dashboard/_layout/reviews'
+    | '/dashboard/_layout/'
+    | '/dashboard/_layout/galleries/$slug'
+    | '/dashboard/_layout/pages/about'
+    | '/dashboard/_layout/pages/services'
+    | '/dashboard/_layout/galleries/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -94,6 +239,8 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   PricingRoute: typeof PricingRoute
   ServicesRoute: typeof ServicesRoute
+  DashboardLayoutRoute: typeof DashboardLayoutRouteWithChildren
+  DashboardLoginRoute: typeof DashboardLoginRoute
   GallerySlugRoute: typeof GallerySlugRoute
 }
 
@@ -134,6 +281,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard/_layout': {
+      id: '/dashboard/_layout'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardLayoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/login': {
+      id: '/dashboard/login'
+      path: '/dashboard/login'
+      fullPath: '/dashboard/login'
+      preLoaderRoute: typeof DashboardLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/gallery/$slug': {
       id: '/gallery/$slug'
       path: '/gallery/$slug'
@@ -141,8 +302,99 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GallerySlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard/_layout/': {
+      id: '/dashboard/_layout/'
+      path: '/'
+      fullPath: '/dashboard/'
+      preLoaderRoute: typeof DashboardLayoutIndexRouteImport
+      parentRoute: typeof DashboardLayoutRoute
+    }
+    '/dashboard/_layout/contact': {
+      id: '/dashboard/_layout/contact'
+      path: '/contact'
+      fullPath: '/dashboard/contact'
+      preLoaderRoute: typeof DashboardLayoutContactRouteImport
+      parentRoute: typeof DashboardLayoutRoute
+    }
+    '/dashboard/_layout/hero': {
+      id: '/dashboard/_layout/hero'
+      path: '/hero'
+      fullPath: '/dashboard/hero'
+      preLoaderRoute: typeof DashboardLayoutHeroRouteImport
+      parentRoute: typeof DashboardLayoutRoute
+    }
+    '/dashboard/_layout/pricing': {
+      id: '/dashboard/_layout/pricing'
+      path: '/pricing'
+      fullPath: '/dashboard/pricing'
+      preLoaderRoute: typeof DashboardLayoutPricingRouteImport
+      parentRoute: typeof DashboardLayoutRoute
+    }
+    '/dashboard/_layout/reviews': {
+      id: '/dashboard/_layout/reviews'
+      path: '/reviews'
+      fullPath: '/dashboard/reviews'
+      preLoaderRoute: typeof DashboardLayoutReviewsRouteImport
+      parentRoute: typeof DashboardLayoutRoute
+    }
+    '/dashboard/_layout/galleries/': {
+      id: '/dashboard/_layout/galleries/'
+      path: '/galleries'
+      fullPath: '/dashboard/galleries/'
+      preLoaderRoute: typeof DashboardLayoutGalleriesIndexRouteImport
+      parentRoute: typeof DashboardLayoutRoute
+    }
+    '/dashboard/_layout/galleries/$slug': {
+      id: '/dashboard/_layout/galleries/$slug'
+      path: '/galleries/$slug'
+      fullPath: '/dashboard/galleries/$slug'
+      preLoaderRoute: typeof DashboardLayoutGalleriesSlugRouteImport
+      parentRoute: typeof DashboardLayoutRoute
+    }
+    '/dashboard/_layout/pages/about': {
+      id: '/dashboard/_layout/pages/about'
+      path: '/pages/about'
+      fullPath: '/dashboard/pages/about'
+      preLoaderRoute: typeof DashboardLayoutPagesAboutRouteImport
+      parentRoute: typeof DashboardLayoutRoute
+    }
+    '/dashboard/_layout/pages/services': {
+      id: '/dashboard/_layout/pages/services'
+      path: '/pages/services'
+      fullPath: '/dashboard/pages/services'
+      preLoaderRoute: typeof DashboardLayoutPagesServicesRouteImport
+      parentRoute: typeof DashboardLayoutRoute
+    }
   }
 }
+
+interface DashboardLayoutRouteChildren {
+  DashboardLayoutContactRoute: typeof DashboardLayoutContactRoute
+  DashboardLayoutHeroRoute: typeof DashboardLayoutHeroRoute
+  DashboardLayoutPricingRoute: typeof DashboardLayoutPricingRoute
+  DashboardLayoutReviewsRoute: typeof DashboardLayoutReviewsRoute
+  DashboardLayoutIndexRoute: typeof DashboardLayoutIndexRoute
+  DashboardLayoutGalleriesSlugRoute: typeof DashboardLayoutGalleriesSlugRoute
+  DashboardLayoutPagesAboutRoute: typeof DashboardLayoutPagesAboutRoute
+  DashboardLayoutPagesServicesRoute: typeof DashboardLayoutPagesServicesRoute
+  DashboardLayoutGalleriesIndexRoute: typeof DashboardLayoutGalleriesIndexRoute
+}
+
+const DashboardLayoutRouteChildren: DashboardLayoutRouteChildren = {
+  DashboardLayoutContactRoute: DashboardLayoutContactRoute,
+  DashboardLayoutHeroRoute: DashboardLayoutHeroRoute,
+  DashboardLayoutPricingRoute: DashboardLayoutPricingRoute,
+  DashboardLayoutReviewsRoute: DashboardLayoutReviewsRoute,
+  DashboardLayoutIndexRoute: DashboardLayoutIndexRoute,
+  DashboardLayoutGalleriesSlugRoute: DashboardLayoutGalleriesSlugRoute,
+  DashboardLayoutPagesAboutRoute: DashboardLayoutPagesAboutRoute,
+  DashboardLayoutPagesServicesRoute: DashboardLayoutPagesServicesRoute,
+  DashboardLayoutGalleriesIndexRoute: DashboardLayoutGalleriesIndexRoute,
+}
+
+const DashboardLayoutRouteWithChildren = DashboardLayoutRoute._addFileChildren(
+  DashboardLayoutRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -150,6 +402,8 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   PricingRoute: PricingRoute,
   ServicesRoute: ServicesRoute,
+  DashboardLayoutRoute: DashboardLayoutRouteWithChildren,
+  DashboardLoginRoute: DashboardLoginRoute,
   GallerySlugRoute: GallerySlugRoute,
 }
 export const routeTree = rootRouteImport

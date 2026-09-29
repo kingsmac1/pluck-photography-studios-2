@@ -5,6 +5,9 @@ import { Parallax } from "@/components/Parallax";
 import { Reveal } from "@/components/Reveal";
 import { TestimonialCoverflow } from "@/components/TestimonialCoverflow";
 import { photos } from "@/lib/photos";
+import { pages } from "@/lib/site";
+
+const { hero, story, values } = pages.about;
 
 const title = "About Pluck Photography Studios | Calgary";
 const description =
@@ -28,28 +31,13 @@ export const Route = createFileRoute("/about")({
   component: AboutPage,
 });
 
-const values = [
-  {
-    title: "Precision",
-    copy: "Light, lens and timing are decided deliberately. Nothing in the frame is there by accident.",
-  },
-  {
-    title: "Patience",
-    copy: "We wait for the real expression instead of asking for a performance. It takes longer and it shows.",
-  },
-  {
-    title: "Care",
-    copy: "You are guided from the first email to the final delivery, so the session feels easy rather than exposing.",
-  },
-];
-
 function AboutPage() {
   return (
     <>
       <PageHero
-        eyebrow="Our Story"
-        title="Exquisite Images, Made With Care"
-        intro="Pluck Photography Studios is a Calgary photography studio specializing in portraits, family sessions, corporate headshots, maternity and weddings. We photograph people the way they would like to be remembered."
+        eyebrow={hero.eyebrow}
+        title={hero.title}
+        intro={hero.intro}
         image={photos.galleryWide}
       />
 
@@ -75,20 +63,16 @@ function AboutPage() {
           </Reveal>
 
           <Reveal className="order-1 lg:order-2">
-            <p className="eyebrow">The Studio</p>
-            <h2 className="display mt-5 text-[clamp(1.9rem,4vw,3.2rem)]">
-              Photography That Feels Like You
-            </h2>
-            <p className="mt-8 text-sm leading-relaxed text-muted-foreground md:text-base">
-              We built the studio around one belief: everyone photographs well when they are lit
-              properly, directed kindly and given a little time. Most people who tell us they hate
-              having their picture taken leave with a favourite.
-            </p>
-            <p className="mt-5 text-sm leading-relaxed text-muted-foreground md:text-base">
-              From a first birthday to a wedding day, from a headshot to a maternity session, the
-              approach is the same — considered light, honest direction, and hand editing on every
-              frame we deliver.
-            </p>
+            <p className="eyebrow">{story.eyebrow}</p>
+            <h2 className="display mt-5 text-[clamp(1.9rem,4vw,3.2rem)]">{story.heading}</h2>
+            {story.paragraphs.map((paragraph) => (
+              <p
+                key={paragraph}
+                className="mt-5 text-sm leading-relaxed text-muted-foreground first:mt-8 md:text-base"
+              >
+                {paragraph}
+              </p>
+            ))}
           </Reveal>
         </div>
 

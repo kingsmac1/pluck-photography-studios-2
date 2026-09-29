@@ -16,7 +16,10 @@ export const Route = createFileRoute("/gallery/$slug")({
   head: ({ params, loaderData }) => {
     if (!loaderData) {
       return {
-        meta: [{ title: "Gallery not found — Pluck Photography Studios" }, { name: "robots", content: "noindex" }],
+        meta: [
+          { title: "Gallery not found — Pluck Photography Studios" },
+          { name: "robots", content: "noindex" },
+        ],
       };
     }
     const title = `${loaderData.gallery.name} Photography — Pluck Photography Studios`;
@@ -63,31 +66,41 @@ function GalleryPage() {
       </section>
 
       <section className="mx-auto max-w-[1400px] px-6 py-20 lg:px-10 lg:py-28">
-        <div className="columns-2 gap-4 sm:gap-6 lg:columns-3 [&>*]:mb-4 sm:[&>*]:mb-6">
-          {gallery.images.map((src, i) => {
-            const shapes = ["aspect-4/5", "aspect-square", "aspect-3/4", "aspect-2/3"] as const;
-            const shape = shapes[i % shapes.length];
-            return (
-              <Reveal key={`${src}-${i}`} delay={(i % 3) * 90} className="break-inside-avoid">
-                <Parallax speed={i % 3 === 1 ? 0.08 : 0.02} className="hover-zoom rounded-lg">
-                  <button
-                    type="button"
-                    onClick={() => setLightboxIndex(i)}
-                    className="block w-full cursor-zoom-in"
-                    aria-label={`Open ${gallery.name} photo ${i + 1} in lightbox`}
-                  >
-                    <img
-                      src={src}
-                      alt={`${gallery.name} photography frame ${i + 1}`}
-                      loading="lazy"
-                      className={`w-full rounded-lg object-cover ${shape}`}
-                    />
-                  </button>
-                </Parallax>
-              </Reveal>
-            );
-          })}
-        </div>
+        {gallery.images.length === 0 ? (
+          <Reveal className="border-t border-border py-20 text-center">
+            <p className="eyebrow">Coming Soon</p>
+            <p className="display mt-5 text-2xl">This gallery is being updated</p>
+            <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
+              New {gallery.name.toLowerCase()} photography is on its way — check back soon.
+            </p>
+          </Reveal>
+        ) : (
+          <div className="columns-2 gap-4 sm:gap-6 lg:columns-3 [&>*]:mb-4 sm:[&>*]:mb-6">
+            {gallery.images.map((src, i) => {
+              const shapes = ["aspect-4/5", "aspect-square", "aspect-3/4", "aspect-2/3"] as const;
+              const shape = shapes[i % shapes.length];
+              return (
+                <Reveal key={`${src}-${i}`} delay={(i % 3) * 90} className="break-inside-avoid">
+                  <Parallax speed={i % 3 === 1 ? 0.08 : 0.02} className="hover-zoom rounded-lg">
+                    <button
+                      type="button"
+                      onClick={() => setLightboxIndex(i)}
+                      className="block w-full cursor-zoom-in"
+                      aria-label={`Open ${gallery.name} photo ${i + 1} in lightbox`}
+                    >
+                      <img
+                        src={src}
+                        alt={`${gallery.name} photography frame ${i + 1}`}
+                        loading="lazy"
+                        className={`w-full rounded-lg object-cover ${shape}`}
+                      />
+                    </button>
+                  </Parallax>
+                </Reveal>
+              );
+            })}
+          </div>
+        )}
       </section>
 
       {lightboxIndex !== null && (

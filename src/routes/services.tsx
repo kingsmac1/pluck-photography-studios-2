@@ -5,6 +5,9 @@ import { PageHero } from "@/components/PageHero";
 import { PricingSection } from "@/components/PricingSection";
 import { Reveal } from "@/components/Reveal";
 import { photos } from "@/lib/photos";
+import { pages } from "@/lib/site";
+
+const { hero, steps } = pages.services;
 
 const title = "Photography Services in Calgary | Pluck";
 const description =
@@ -28,20 +31,13 @@ export const Route = createFileRoute("/services")({
   component: ServicesPage,
 });
 
-const steps = [
-  { step: "01", title: "Enquire", copy: "Tell us the occasion, the date and roughly what you have in mind." },
-  { step: "02", title: "Plan", copy: "We agree a session type, wardrobe direction and a run of show." },
-  { step: "03", title: "Photograph", copy: "You are lit, directed and given time. No rushing, no forced smiles." },
-  { step: "04", title: "Deliver", copy: "Hand-edited high resolution images in a private online gallery." },
-];
-
 function ServicesPage() {
   return (
     <>
       <PageHero
-        eyebrow="What We Do"
-        title="Services & Sessions"
-        intro="Studio and on-location photography across seven specialisms, each with its own pace, lighting approach and delivery."
+        eyebrow={hero.eyebrow}
+        title={hero.title}
+        intro={hero.intro}
         image={photos.bannerWide2}
       />
 
