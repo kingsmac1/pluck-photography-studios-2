@@ -1,10 +1,10 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { useState } from "react";
 import { CtaBanner } from "@/components/CtaBanner";
-import { GalleryCards } from "@/components/GalleryCards";
 import { Lightbox } from "@/components/Lightbox";
 import { PageHero } from "@/components/PageHero";
 import { Parallax } from "@/components/Parallax";
+import { RelatedGalleries } from "@/components/RelatedGalleries";
 import { Reveal } from "@/components/Reveal";
 import { galleries, type Gallery } from "@/lib/site";
 
@@ -114,13 +114,7 @@ function GalleryPage() {
         />
       )}
 
-      <GalleryCards
-        eyebrow="Explore More"
-        heading="Other Sessions"
-        intro={`A look at what else we photograph, beyond ${gallery.name.toLowerCase()}.`}
-        exclude={gallery.slug}
-        limit={3}
-      />
+      <RelatedGalleries exclude={gallery.slug} />
 
       <CtaBanner />
     </>

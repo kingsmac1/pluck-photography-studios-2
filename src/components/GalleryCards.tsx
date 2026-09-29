@@ -3,32 +3,18 @@ import { Reveal } from "./Reveal";
 import { galleries } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
-/**
- * Grid of category cards linking to each single gallery page. Pass `exclude` (and usually `limit`)
- * to show a "related galleries" style subset instead of the full listing — used on gallery detail
- * pages to surface the other sessions.
- */
+/** Grid of category cards linking to each single gallery page. */
 export function GalleryCards({
   eyebrow = "Galleries",
   heading = "What We Photograph",
   intro,
-  exclude,
-  limit,
 }: {
   eyebrow?: string;
   heading?: string;
   intro?: string;
-  exclude?: string;
-  limit?: number;
 }) {
-  const items = galleries
-    .filter((gallery) => gallery.slug !== exclude)
-    .slice(0, limit ?? galleries.length);
-  // The homepage's "View Galleries" link anchors to #galleries — only the full listing should own that id.
-  const sectionId = exclude ? undefined : "galleries";
-
   return (
-    <section id={sectionId} className="mx-auto max-w-[1400px] px-6 py-24 lg:px-10 lg:py-32">
+    <section id="galleries" className="mx-auto max-w-[1400px] px-6 py-24 lg:px-10 lg:py-32">
       <Reveal className="max-w-2xl">
         <p className="eyebrow">{eyebrow}</p>
         <h2 className="display mt-5 text-[clamp(2rem,4.4vw,3.6rem)]">{heading}</h2>
@@ -38,7 +24,7 @@ export function GalleryCards({
       </Reveal>
 
       <div className="mt-16 columns-1 gap-6 sm:columns-2 lg:columns-3 [&>*]:mb-6">
-        {items.map((gallery, i) => (
+        {galleries.map((gallery, i) => (
           <Reveal key={gallery.slug} delay={(i % 3) * 90} className="break-inside-avoid">
             <Link
               to="/gallery/$slug"
