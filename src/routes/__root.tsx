@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -172,6 +173,19 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const isDashboard = useRouterState({
+    select: (state) => state.location.pathname.startsWith("/dashboard"),
+  });
+
+  // The dashboard has its own chrome (sidebar/bottom bar) and shouldn't wear the public
+  // site's header/footer.
+  if (isDashboard) {
+    return (
+      <QueryClientProvider client={queryClient}>
+        <Outlet />
+      </QueryClientProvider>
+    );
+  }
 
   return (
     <QueryClientProvider client={queryClient}>
