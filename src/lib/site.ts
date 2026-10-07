@@ -1,9 +1,6 @@
 import { photos } from "./photos";
 import { getGalleryCover, getGalleryImages } from "./gallery-assets";
 import { getHeroImage } from "./hero-assets";
-import heroMobile1 from "@/assets/galleries/portraits/784A8988.jpg";
-import heroMobile2 from "@/assets/galleries/portraits/784A1814.jpg";
-import heroMobile3 from "@/assets/galleries/family/784A9344.jpg";
 import contactJson from "@/content/contact.json";
 import galleriesJson from "@/content/galleries.json";
 import heroJson from "@/content/hero.json";
@@ -33,19 +30,11 @@ export const contact = contactContent;
 /** Fallback hero images, shown until a real image is uploaded for that slide from the dashboard. */
 const heroFallbackImages = [photos.bannerWide1, photos.galleryWide, photos.bannerWide2];
 
-/**
- * Portrait crops for narrow screens — the fallback images above are landscape and crop awkwardly
- * on a phone-width hero. Curated from the gallery folders; there's no dashboard control for these
- * yet (only the desktop `image` is editable there), so they stay fixed even after a desktop upload.
- */
-const heroMobileFallbackImages = [heroMobile1, heroMobile2, heroMobile3];
-
 export const heroSlides = heroContent.map((slide, i) => ({
   eyebrow: slide.eyebrow,
   title: slide.title,
   caption: slide.caption,
   image: getHeroImage(slide.image) ?? heroFallbackImages[i] ?? photos.bannerWide1,
-  mobileImage: heroMobileFallbackImages[i] ?? heroMobileFallbackImages[0]!,
 }));
 
 export type Gallery = {

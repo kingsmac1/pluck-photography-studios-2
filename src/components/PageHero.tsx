@@ -7,21 +7,27 @@ export function PageHero({
   title,
   intro,
   image,
+  mobileImage,
 }: {
   eyebrow: string;
   title: string;
   intro?: string;
   image: string;
+  /** Portrait crop shown below the `lg` breakpoint (phones and tablets) instead of a landscape `image`. */
+  mobileImage?: string;
 }) {
   return (
     <header className="relative overflow-hidden">
       <Parallax speed={0.22} className="absolute inset-0 -z-10">
-        <img
-          src={image}
-          alt=""
-          aria-hidden
-          className="h-[130%] w-full scale-110 object-cover opacity-35 grayscale"
-        />
+        <picture className="contents">
+          {mobileImage ? <source media="(max-width: 1023px)" srcSet={mobileImage} /> : null}
+          <img
+            src={image}
+            alt=""
+            aria-hidden
+            className="h-[130%] w-full scale-110 object-cover opacity-35 grayscale"
+          />
+        </picture>
       </Parallax>
       <div className="absolute inset-0 -z-10 bg-linear-to-b from-background/85 via-background/70 to-background" />
       <div className="mx-auto max-w-[1400px] px-6 pb-20 pt-44 lg:px-10 lg:pb-28 lg:pt-56">

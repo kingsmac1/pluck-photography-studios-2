@@ -6,6 +6,7 @@ import { PricingSection } from "@/components/PricingSection";
 import { Reveal } from "@/components/Reveal";
 import { photos } from "@/lib/photos";
 import { pages } from "@/lib/site";
+import servicesMobileHero from "@/assets/galleries/portraits/784A1814.jpg";
 
 const { hero, steps } = pages.services;
 
@@ -39,6 +40,7 @@ function ServicesPage() {
         title={hero.title}
         intro={hero.intro}
         image={photos.bannerWide2}
+        mobileImage={servicesMobileHero}
       />
 
       <section className="mx-auto max-w-[1400px] px-6 py-20 lg:px-10 lg:py-24">

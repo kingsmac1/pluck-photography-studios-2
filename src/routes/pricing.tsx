@@ -6,6 +6,7 @@ import { Reveal } from "@/components/Reveal";
 import { TestimonialCoverflow } from "@/components/TestimonialCoverflow";
 import { photos } from "@/lib/photos";
 import { pricingFaqs } from "@/lib/site";
+import pricingMobileHero from "@/assets/galleries/portraits/784A8988.jpg";
 
 const title = "Studio Session Pricing | Pluck Photography";
 const description =
@@ -37,6 +38,7 @@ function PricingPage() {
         title="Simple, Transparent Rates"
         intro="Studio session pricing with no hidden extras. Wedding and event coverage is quoted per day."
         image={photos.bannerWide1}
+        mobileImage={pricingMobileHero}
       />
 
       <PricingSection withHeading={false} />
