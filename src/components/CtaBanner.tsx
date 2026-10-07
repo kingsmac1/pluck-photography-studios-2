@@ -2,18 +2,22 @@ import { BookNow } from "./BookNow";
 import { Parallax } from "./Parallax";
 import { Reveal } from "./Reveal";
 import { photos } from "@/lib/photos";
+import ctaMobileImage from "@/assets/galleries/family/784A6710.jpg";
 
 export function CtaBanner() {
   return (
     <section className="relative flex min-h-[100dvh] flex-col items-center justify-center overflow-hidden lg:block lg:min-h-0">
       <Parallax speed={0.28} className="absolute inset-0 -z-10">
-        <img
-          src={photos.bannerWide2}
-          alt=""
-          aria-hidden
-          loading="lazy"
-          className="h-[130%] w-full scale-110 object-cover opacity-40"
-        />
+        <picture className="contents">
+          <source media="(max-width: 767px)" srcSet={ctaMobileImage} />
+          <img
+            src={photos.bannerWide2}
+            alt=""
+            aria-hidden
+            loading="lazy"
+            className="h-[130%] w-full scale-110 object-cover opacity-40"
+          />
+        </picture>
       </Parallax>
       <div className="absolute inset-0 -z-10 bg-linear-to-b from-background via-background/60 to-background" />
       <div className="mx-auto max-w-[1400px] px-6 py-32 text-center lg:px-10 lg:py-44">

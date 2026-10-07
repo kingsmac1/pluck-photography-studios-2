@@ -49,12 +49,15 @@ export function HeroSlider() {
             )}
             aria-hidden={i !== index}
           >
-            <img
-              src={slide.image}
-              alt={slide.title}
-              className={cn("h-full w-full object-cover", i === index && "animate-ken-burns")}
-              loading={i === 0 ? "eager" : "lazy"}
-            />
+            <picture className="contents">
+              <source media="(max-width: 767px)" srcSet={slide.mobileImage} />
+              <img
+                src={slide.image}
+                alt={slide.title}
+                className={cn("h-full w-full object-cover", i === index && "animate-ken-burns")}
+                loading={i === 0 ? "eager" : "lazy"}
+              />
+            </picture>
             <div className="absolute inset-0 bg-linear-to-t from-background via-background/45 to-background/70" />
           </div>
         ))}

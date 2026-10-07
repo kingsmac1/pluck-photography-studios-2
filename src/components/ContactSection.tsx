@@ -1,14 +1,23 @@
-import { useState, type FormEvent } from "react";
+import type { FormEvent } from "react";
 import { Reveal } from "./Reveal";
 import { contact } from "@/lib/site";
 
-/** Presentation-only enquiry form with a success state. */
+/** Enquiry form that hands off to a prefilled WhatsApp chat rather than posting anywhere. */
 export function ContactSection() {
-  const [sent, setSent] = useState(false);
-
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setSent(true);
+    const data = new FormData(event.currentTarget);
+    const name = String(data.get("name") ?? "").trim();
+    const email = String(data.get("email") ?? "").trim();
+    const message = String(data.get("message") ?? "").trim();
+
+    const lines = [`Hi Pluck Photography, I'm ${name}.`];
+    if (email) lines.push(`Email: ${email}`);
+    lines.push("", message);
+
+    const whatsappNumber = contact.phoneHref.replace(/\D/g, "");
+    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(lines.join("\n"))}`;
+    window.open(url, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -80,10 +89,11 @@ export function ContactSection() {
               type="submit"
               className="mt-10 inline-flex items-center gap-2 rounded-full bg-foreground px-7 py-3 text-xs uppercase tracking-[0.2em] text-background transition-opacity hover:opacity-85"
             >
-              {sent ? "Thanks — we'll be in touch" : "Submit"}
+              Send via WhatsApp
             </button>
             <p className="mt-4 text-xs text-muted-foreground">
-              Prefer email? Write to {contact.email} and we usually reply within one business day.
+              Opens WhatsApp with your message ready to send. Prefer email? Write to {contact.email}{" "}
+              and we usually reply within one business day.
             </p>
           </form>
         </Reveal>
