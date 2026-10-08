@@ -78,7 +78,7 @@ export function SiteFooter() {
       </div>
 
       <div className="col-span-full flex flex-col gap-3 border-t border-border pt-8 text-[11px] uppercase tracking-[0.2em] text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-        <span>&copy; {new Date().getFullYear()} Pluck Photography Studios</span>
+        <span>&copy; {new Date().getFullYear()} Pluck Photography Studios{" "}<span className="whitespace-nowrap">· Website by <a href="https://emkaydigitals.com" target="_blank" rel="noopener" className="underline-offset-2 hover:underline">Emkay Digitals</a></span></span>
         <span>Calgary, Alberta &middot; By Appointment</span>
       </div>
     </div>
