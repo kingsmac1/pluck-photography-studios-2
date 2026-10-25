@@ -3,19 +3,31 @@
     {
       "name": "Silver",
       "price": "$260",
-      "features": ["Up to 2 outfits", "8 edited high resolution images", "45 Minutes"],
+      "features": [
+        "Up to 2 outfits",
+        "8 edited high resolution images",
+        "45 Minutes"
+      ],
       "featured": false
     },
     {
       "name": "Gold",
       "price": "$340",
-      "features": ["Up to 3 outfits", "10 edited high resolution images", "60 minutes"],
+      "features": [
+        "Up to 3 outfits",
+        "12 edited high resolution images",
+        "60 minutes"
+      ],
       "featured": true
     },
     {
       "name": "Platinum",
       "price": "$420",
-      "features": ["Up to 4 outfits", "16 edited high resolution images", "90 Minutes"],
+      "features": [
+        "Up to 4 outfits",
+        "16 edited high resolution images",
+        "90 Minutes"
+      ],
       "featured": false
     }
   ],
