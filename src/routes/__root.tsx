@@ -1,3 +1,4 @@
+import CookieConsent from "@/components/CookieConsent";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -203,7 +204,7 @@ function RootComponent() {
       <FooterReveal footer={<SiteFooter />}>
         <main>
           {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-          <Outlet />
+          <><Outlet /><CookieConsent /></>
         </main>
       </FooterReveal>
     </QueryClientProvider>
